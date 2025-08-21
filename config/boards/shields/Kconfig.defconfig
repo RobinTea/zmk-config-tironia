@@ -1,0 +1,6 @@
+if SHIELD_[tironia]
+
+config ZMK_KEYBOARD_NAME
+    default "[tironia]"
+
+endif

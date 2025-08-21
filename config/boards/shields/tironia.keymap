@@ -1,0 +1,32 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+        
+        steno_layer {
+            // Custom 28-Key Split Steno Layout for Plover
+            // Left Hand (11 keys)          Right Hand (17 keys)
+            // ┌─────┬─────┬─────┬─────┬─────┐    ┌─────┬─────┬─────┬─────┬─────┬─────┐
+            // │ #1  │ S-  │ T-  │ K-  │ P-  │    │ W-  │ H-  │ R-  │ A   │ O   │ *   │
+            // ├─────┼─────┼─────┼─────┼─────┤    ├─────┼─────┼─────┼─────┼─────┼─────┤
+            // │ #2  │ S-  │ K-  │ W-  │ R-  │    │ *   │ -F  │ -P  │ -L  │ -T  │ -D  │
+            // └─────┴─────┼─────┼─────┼─────┤    ├─────┼─────┼─────┼─────┴─────┴─────┘
+            //             │ #3  │ #4  │ A   │    │ E   │ U   │ #12 │
+            //             └─────┴─────┴─────┘    └─────┴─────┴─────┘
+            
+            bindings = <
+                // Left hand - 5 top + 5 bottom + 3 thumb
+                &kp N1    &kp Q     &kp W     &kp E     &kp R      // Top: #1, S-, T-, K-, P-
+                &kp N2    &kp A     &kp S     &kp D     &kp F      // Bottom: #2, S-, K-, W-, R-
+                          &kp N3    &kp N4    &kp T                 // Thumbs: #3, #4, A
+                
+                // Right hand - 6 top + 6 bottom + 3 thumb  
+                &kp Y     &kp U     &kp I     &kp O     &kp P     &kp LBKT    // Top: W-, H-, R-, A, O, *
+                &kp G     &kp H     &kp J     &kp K     &kp L     &kp SEMI    // Bottom: *, -F, -P, -L, -T, -D
+                &kp B     &kp N     &kp N0                                    // Thumbs: E, U, #12
+            >;
+        };
+    };
+};
