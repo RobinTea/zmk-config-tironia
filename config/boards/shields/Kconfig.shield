@@ -1,2 +1,2 @@
-config SHIELD_[tironia]
-    def_bool $(shields_list_contains,[tironia])
+config SHIELD_Tironia
+    def_bool $(shields_list_contains,Tironia)

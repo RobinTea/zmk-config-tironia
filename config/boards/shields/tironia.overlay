@@ -1,17 +1,17 @@
-#include "tironia.dtsi"
+#include "Tironia.dtsi"
 
 &kscan0 {
     col-gpios
-        = <&pro_micro 19 GPIO_ACTIVE_HIGH>   // Col 0 - Left keys
-        , <&pro_micro 18 GPIO_ACTIVE_HIGH>   // Col 1 - Left keys
-        , <&pro_micro 15 GPIO_ACTIVE_HIGH>   // Col 2 - Left keys  
-        , <&pro_micro 14 GPIO_ACTIVE_HIGH>   // Col 3 - Left keys
-        , <&pro_micro 16 GPIO_ACTIVE_HIGH>   // Col 4 - Left keys
-        , <&pro_micro 7 GPIO_ACTIVE_HIGH>    // Col 5 - Right keys
-        , <&pro_micro 8 GPIO_ACTIVE_HIGH>    // Col 6 - Right keys
-        , <&pro_micro 1 GPIO_ACTIVE_HIGH>    // Col 7 - Right keys
-        , <&pro_micro 0 GPIO_ACTIVE_HIGH>    // Col 8 - Right keys
-        , <&pro_micro 2 GPIO_ACTIVE_HIGH>    // Col 9 - Right keys
-        , <&pro_micro 3 GPIO_ACTIVE_HIGH>    // Col 10 - Right keys
+        = <&pro_micro 1 GPIO_ACTIVE_HIGH>   // Col 0 - Left keys
+        , <&pro_micro 0 GPIO_ACTIVE_HIGH>   // Col 1 - Left keys
+        , <&pro_micro 17 GPIO_ACTIVE_HIGH>   // Col 2 - Left keys  
+        , <&pro_micro 20 GPIO_ACTIVE_HIGH>   // Col 3 - Left keys
+        , <&pro_micro 22 GPIO_ACTIVE_HIGH>   // Col 4 - Left keys
+        , <&pro_micro 19 GPIO_ACTIVE_HIGH>    // Col 5 - Right keys
+        , <&pro_micro 18 GPIO_ACTIVE_HIGH>    // Col 6 - Right keys
+        , <&pro_micro 15 GPIO_ACTIVE_HIGH>    // Col 7 - Right keys
+        , <&pro_micro 14 GPIO_ACTIVE_HIGH>    // Col 8 - Right keys
+        , <&pro_micro 16 GPIO_ACTIVE_HIGH>    // Col 9 - Right keys
+        , <&pro_micro 8 GPIO_ACTIVE_HIGH>    // Col 10 - Right keys
         ;
 };

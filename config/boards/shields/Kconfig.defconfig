@@ -1,6 +1,6 @@
-if SHIELD_tironia
+if SHIELD_Tironia
 
 config ZMK_KEYBOARD_NAME
-    default "tironia"
+    default "Tironia"
 
 endif
