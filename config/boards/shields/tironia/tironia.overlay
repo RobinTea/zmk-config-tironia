@@ -9,17 +9,16 @@
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <11>;
-        /* This MUST match the number of row-gpios */
         rows = <6>;
 
-        /* This map is now a picture of your keyboard's wiring */
+
         map = <
-        /* Left Top, 5 keys -> row-gpios[0] */  0  1  2  3  4  &none &none &none &none &none &none
-        /* Right Top, 6 keys -> row-gpios[1] */ &none &none &none &none &none  5  6  7  8  9 10
-        /* Left Mid, 5 keys -> row-gpios[2] */ 11 12 13 14 15 &none &none &none &none &none &none
-        /* Right Mid, 6 keys -> row-gpios[3] */ &none &none &none &none &none 16 17 18 19 20 21
-        /* Left Thumb, 3 keys -> row-gpios[4] */ &none &none 22 23 24 &none &none &none &none &none &none
-        /* Right Thumb, 3 keys -> row-gpios[5] */&none &none &none &none &none 25 26 27 &none &none &none
+            0  1  2  3  4          /* Top Left (5) */
+            5  6  7  8  9 10       /* Top Right (6) */
+            11 12 13 14 15         /* Mid Left (5) */
+            16 17 18 19 20 21      /* Mid Right (6) */
+            22 23 24               /* Thumb Left (3) */
+            25 26 27               /* Thumb Right (3) */
         >;
     };
 
