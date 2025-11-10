@@ -1,17 +1,53 @@
 #include "Tironia.dtsi"
+#include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/zmk/bt.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
 
-&kscan0 {
-    col-gpios
-        = <&pro_micro 1 GPIO_ACTIVE_HIGH>   // Col 0 - Left keys
-        , <&pro_micro 0 GPIO_ACTIVE_HIGH>   // Col 1 - Left keys
-        , <&pro_micro 17 GPIO_ACTIVE_HIGH>   // Col 2 - Left keys  
-        , <&pro_micro 20 GPIO_ACTIVE_HIGH>   // Col 3 - Left keys
-        , <&pro_micro 22 GPIO_ACTIVE_HIGH>   // Col 4 - Left keys
-        , <&pro_micro 19 GPIO_ACTIVE_HIGH>    // Col 5 - Right keys
-        , <&pro_micro 18 GPIO_ACTIVE_HIGH>    // Col 6 - Right keys
-        , <&pro_micro 15 GPIO_ACTIVE_HIGH>    // Col 7 - Right keys
-        , <&pro_micro 14 GPIO_ACTIVE_HIGH>    // Col 8 - Right keys
-        , <&pro_micro 16 GPIO_ACTIVE_HIGH>    // Col 9 - Right keys
-        , <&pro_micro 8 GPIO_ACTIVE_HIGH>    // Col 10 - Right keys
-        ;
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,matrix_transform = &default_transform;
+    };
+
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <11>;
+        rows = <3>;
+
+        map = <
+            RC(5,1) RC(5,0) RC(5,2) RC(5,3) RC(5,4)  RC(21,19) RC(21,18) RC(21,15) RC(21,14) RC(21,16) RC(21,8)
+            RC(6,1) RC(6,0) RC(6,2) RC(6,3) RC(6,4)  RC(20,19) RC(20,18) RC(20,15) RC(20,14) RC(20,16) RC(20,8) 
+                            RC(9,2) RC(9,3) RC(9,4)  RC(10,19) RC(10,18) RC(10,15)  
+        >;
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
+        diode-direction = "col2row";
+        row-gpios
+            = <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>    // Left top row
+            , <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // Right top row  
+            , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>    // Left middle row
+            , <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // Right middle row
+            , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>    // Left thumb row
+            , <&pro_micro 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   // Right thumb row
+            ;
+        
+        col-gpios
+            = <&pro_micro 1 GPIO_ACTIVE_HIGH>   // Col 0 - Left keys
+            , <&pro_micro 0 GPIO_ACTIVE_HIGH>   // Col 1 - Left keys
+            , <&pro_micro 17 GPIO_ACTIVE_HIGH>   // Col 2 - Left keys  
+            , <&pro_micro 20 GPIO_ACTIVE_HIGH>   // Col 3 - Left keys
+            , <&pro_micro 22 GPIO_ACTIVE_HIGH>   // Col 4 - Left keys
+            , <&pro_micro 19 GPIO_ACTIVE_HIGH>    // Col 5 - Right keys
+            , <&pro_micro 18 GPIO_ACTIVE_HIGH>    // Col 6 - Right keys
+            , <&pro_micro 15 GPIO_ACTIVE_HIGH>    // Col 7 - Right keys
+            , <&pro_micro 14 GPIO_ACTIVE_HIGH>    // Col 8 - Right keys
+            , <&pro_micro 16 GPIO_ACTIVE_HIGH>    // Col 9 - Right keys
+            , <&pro_micro 8 GPIO_ACTIVE_HIGH>    // Col 10 - Right keys
+            ;
+
+    };
 };
