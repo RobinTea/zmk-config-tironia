@@ -8,7 +8,7 @@
         compatible = "zmk,keymap";
         
         default_layer {
-            display-name = "Default Layer"
+            display-name = "Default Layer";
 
             // Left Hand (11 keys)          Right Hand (17 keys)
             // ┌─────┬─────┬─────┬─────┬─────┐    ┌─────┬─────┬─────┬─────┬─────┬─────┐
@@ -20,9 +20,8 @@
             //             └─────┴─────┴─────┘    └─────┴─────┴─────┘
             
             bindings = <
-                // no idea
-                &kp TAB   &kp Q     &kp W     &kp E     &kp R               &kp T   &kp Z   &kp U     &kp I     &kp O     &kp BSPC 
-                &kp LSHFT &kp A     &kp S     &kp D     &kp F               &kp G   &kp H   &kp J     &kp K     &kp L     &kp ENT
+                &kp TAB   &kp Q     &kp W     &kp E     &kp R               &kp T   &kp Z   &kp U    &kp I    &kp O   &kp BSPC 
+                &kp COMMA &kp A     &kp S     &kp D     &kp F               &kp G   &kp H   &kp J    &kp K    &kp L   &kp ENT
                                     &kp X     &kp C     &kp V               &kp B   &kp N   &kp M     
             >;
         };
