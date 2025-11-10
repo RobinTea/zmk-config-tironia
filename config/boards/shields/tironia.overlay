@@ -7,6 +7,14 @@
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
+        zmk,physical-layout = &default_layout;
+    };
+
+    //Define a simple default physical layout - thx gpt
+    default_layout: keymap {
+        compatible = "zmk,physical-layout";
+        label = "Default Tironia Layout";
+        // You can leave it empty — ZMK just needs it to exist
     };
 
     default_transform: keymap_transform_0 {
