@@ -1,13 +1,10 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
-    /* =========================================================================
-     *    THIS IS THE FIX: Disable default board features to free up pins.
-     * ========================================================================= */
-    
+ 
     /* Disable the VCC Out control that reserves Pin 24 (P0.24) */
-    vcc_power_ctrl: vcc_power_ctrl {
-        compatible = "zmk,vcc-power-gpios";
+    /* This is CORRECT */
+    &vcc_power_ctrl {
         status = "disabled";
     };
 
@@ -15,8 +12,6 @@
     &vbatt {
         status = "disabled";
     };
-
-    /* ========================================================================= */
 
 
     chosen {
