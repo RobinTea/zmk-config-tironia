@@ -1,18 +1,11 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
-    /*
-     * Disable the default battery monitoring to free up its pin.
-     * This one is correct and works.
-     */
+
     &vbatt {
         status = "disabled";
     };
 
-    /*
-     * Hog the pins needed for the matrix.
-     * This forces them to be available for our kscan node.
-     */
     hog_pins: hog_pins {
         compatible = "gpio-hog";
         gpios
