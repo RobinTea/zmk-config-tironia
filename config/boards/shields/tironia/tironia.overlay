@@ -1,14 +1,19 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
 /* Disable the VCC Out control that reserves Pin 24 (P0.24) */
-&vcc_power_ctrl {
+&vcc_pins_ctrl {
     status = "disabled";
 };
 
-/* Disable the default battery monitoring that may reserve Pin 12 (P0.12) */
-&vbatt {
-    status = "disabled";
-};
+/* 
+ * The default battery monitoring is not enabled on the nice!nano v2 by default,
+ * so this is not needed. If you were adding a battery sense circuit, you
+ * would uncomment and configure this.
+ */
+// &vbatt {
+//     status = "disabled";
+// };
+
 
 / {
     chosen {
