@@ -1,6 +1,24 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
+    /* =========================================================================
+     *    THIS IS THE FIX: Disable default board features to free up pins.
+     * ========================================================================= */
+    
+    /* Disable the VCC Out control that reserves Pin 24 (P0.24) */
+    vcc_power_ctrl: vcc_power_ctrl {
+        compatible = "zmk,vcc-power-gpios";
+        status = "disabled";
+    };
+
+    /* Disable the default battery monitoring that reserves Pin 12 (P0.12) */
+    &vbatt {
+        status = "disabled";
+    };
+
+    /* ========================================================================= */
+
+
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
@@ -25,27 +43,28 @@
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
         
+        /* This is your original, correct pin list in the proper format */
         row-gpios
-            = <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* P0.24 */
-            , <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* P0.31 */
-            , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* P1.00 */
-            , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* P0.29 */
-            , <&pro_micro 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* P1.06 */
-            , <&pro_micro 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* P0.09 */
+            = <&pro_micro 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* P0.24 */
+            , <&pro_micro 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* P0.31 */
+            , <&pro_micro 32 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* P1.00 */
+            , <&pro_micro 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* P0.29 */
+            , <&pro_micro 38 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* P1.06 */
+            , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* P0.09 */
             ;
         
         col-gpios
-            = <&pro_micro 1 (GPIO_ACTIVE_HIGH)>   /* P0.06 */
-            , <&pro_micro 2 (GPIO_ACTIVE_HIGH)>   /* P0.08 */
-            , <&pro_micro 5 (GPIO_ACTIVE_HIGH)>  /* P0.17 */
-            , <&pro_micro 6 (GPIO_ACTIVE_HIGH)>  /* P0.20 */
-            , <&pro_micro 7 (GPIO_ACTIVE_HIGH)>  /* P0.22 */
-            , <&pro_micro 18 (GPIO_ACTIVE_HIGH)>   /* P0.02 */
-            , <&pro_micro 17 (GPIO_ACTIVE_HIGH)>  /* P1.15 */
-            , <&pro_micro 16 (GPIO_ACTIVE_HIGH)>  /* P1.13 */
-            , <&pro_micro 15 (GPIO_ACTIVE_HIGH)>  /* P1.11 */
-            , <&pro_micro 14 (GPIO_ACTIVE_HIGH)>  /* P0.10 */
-            , <&pro_micro 11 (GPIO_ACTIVE_HIGH)>  /* P1.04 */
+            = <&pro_micro 6 (GPIO_ACTIVE_HIGH)>   /* P0.06 */
+            , <&pro_micro 8 (GPIO_ACTIVE_HIGH)>   /* P0.08 */
+            , <&pro_micro 17 (GPIO_ACTIVE_HIGH)>  /* P0.17 */
+            , <&pro_micro 20 (GPIO_ACTIVE_HIGH)>  /* P0.20 */
+            , <&pro_micro 22 (GPIO_ACTIVE_HIGH)>  /* P0.22 */
+            , <&pro_micro 2 (GPIO_ACTIVE_HIGH)>   /* P0.02 */
+            , <&pro_micro 47 (GPIO_ACTIVE_HIGH)>  /* P1.15 */
+            , <&pro_micro 45 (GPIO_ACTIVE_HIGH)>  /* P1.13 */
+            , <&pro_micro 43 (GPIO_ACTIVE_HIGH)>  /* P1.11 */
+            , <&pro_micro 10 (GPIO_ACTIVE_HIGH)>  /* P0.10 */
+            , <&pro_micro 36 (GPIO_ACTIVE_HIGH)>  /* P1.04 */
             ;
     };
 };
