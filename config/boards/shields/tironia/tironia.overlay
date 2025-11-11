@@ -1,21 +1,27 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 
-/* Disable the VCC Out control that reserves Pin 24 (P0.24) */
-&vcc_pins_ctrl {
-    status = "disabled";
-};
-
-/* 
- * The default battery monitoring is not enabled on the nice!nano v2 by default,
- * so this is not needed. If you were adding a battery sense circuit, you
- * would uncomment and configure this.
- */
-// &vbatt {
-//     status = "disabled";
-// };
-
-
 / {
+    /*
+     * Disable the default battery monitoring to free up its pin.
+     * This one is correct and works.
+     */
+    &vbatt {
+        status = "disabled";
+    };
+
+    /*
+     * Hog the pins needed for the matrix.
+     * This forces them to be available for our kscan node.
+     */
+    hog_pins: hog_pins {
+        compatible = "gpio-hog";
+        gpios
+            = <&pro_micro 24 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 9 GPIO_ACTIVE_HIGH>
+            ;
+        input-enable;
+    };
+
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
@@ -40,7 +46,6 @@
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
         
-        /* Your original, correct pin list */
         row-gpios
             = <&pro_micro 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
